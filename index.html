@@ -131,7 +131,7 @@
          else{
            alert("Hi " + fname + " " + lname + "\n" + "Your message has been sent.");
            var database = firebase.database();
-           var nameRef = database.ref('name')
+           var nameRef = database.ref('name/' + fname + lname);
            var result = nameRef.set({
              fname:fname,
              lname:lname,
