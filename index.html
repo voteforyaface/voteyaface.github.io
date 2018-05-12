@@ -57,7 +57,25 @@
     </p>
     </div>
     <div id="id">
+    
+  
+    </div>
     <div>
+<form id="former">
+  <div class="form-row">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="First name" id="fname">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Last name" id="lname">
+    </div>
+     <div class="col">
+      <button type="submit" class="btn btn-primary" id="Summit">Submit</button>
+    </div>
+  </div>
+</form>
+    </div>
+ <div>
       <h3><a name="Vote" id="ooh">Vote!</a></h3>
     </div>
     <div>
@@ -65,10 +83,20 @@
       <h1 id="bell">OR</h1>
       <img src="img/images.jpg" alt="Smiley face" height="200" width="200" id="aaimrd">      
     </div>
-    </div>
-    <div>
-
-    </div>
+    
+<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBzHInlkI5POIkhyJGO2MtsUbZu1H3qWCY",
+    authDomain: "firstbase-6552f.firebaseapp.com",
+    databaseURL: "https://firstbase-6552f.firebaseio.com",
+    projectId: "firstbase-6552f",
+    storageBucket: "",
+    messagingSenderId: "313538791415"
+  };
+  firebase.initializeApp(config);
+</script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -77,10 +105,42 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
     $(document).ready(function(){
-    $("#bellytiz").click(function(){
-      alert("You clicked the bell.")
+      $("#bellytiz").click(function(){
+        alert("You clicked the bell.")
+      });
+      $("#aaimrd").click(function(){
+        alert("You clicked the aim.")
+      });
+      //  $("#former").click(function(){
+      //   alert("You submit it.")
+      // });\
+      $(function(){
+       $('#Summit').click(function(event){
+         event.preventDefault();
+         var fname =  document.getElementById("fname").value;
+         var lname = document.getElementById("lname").value
+         
+         
+         if(fname==''){
+           alert('Please fill out your first name in the form.')
+         }
+         else if(lname==''){
+           alert('Please fill out your last name in the form.')
+         }
+         
+         else{
+           alert("Hi " + fname + " " + lname + "\n" + "Your message has been sent.");
+           var database = firebase.database();
+           var nameRef = database.ref('name')
+           var result = nameRef.set({
+             fname:fname,
+             lname:lname,
+           })
+         }
+ });
+        });
     });
-});
+
     </script>
     
     
