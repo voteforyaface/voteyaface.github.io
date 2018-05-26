@@ -48,36 +48,13 @@
                     </li> -->
                   </ul>
     </div>
-    <div id="goright">
-    <p id="lol">What is this website's purpose?</p>
-    <p>
-        I like trolling and posting my friends' funny face.
-    </p>
-    <p>
-        I am a mysterious person.You'll never know me.
-    </p>
-    </div>
-    <div id="id">
     
   
-    </div>
-    <div>
-<form id="former">
-  <div class="form-row">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="First name" id="fname">
-    </div>
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Last name" id="lname">
-    </div>
-     <!-- <div class="col">
-      <button type="submit" class="btn btn-primary" id="Summit">Submit</button>
-    </div> -->
-  </div>
-</form>
+   
+
     </div>
  <div>
-      <h3><a name="Vote" id="ooh">Vote!</a></h3>
+      <h3><a name="Vote" id="ooh">result</a></h3>
     </div>
     <div>
       <img src="img/bell.png" alt="Smiley face" height="200" width="200" id="bellytiz">
@@ -105,100 +82,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-    $(document).ready(function(){
-      $("#bellytiz").click(function(){
-        
-          event.preventDefault();
-         var fname =  document.getElementById("fname").value;
-         var lname = document.getElementById("lname").value
-        
-         
-         if(fname==''){
-           alert('Please fill out your first name in the form.')
-         }
-         else if(lname==''){
-           alert('Please fill out your last name in the form.')
-         }
-         
-         else{
-           alert("Hi " + fname + " " + lname + "\n" + "Your message has been sent.");
-           alert("You clicked the bell.")
-           var database = firebase.database();
-           var nameRef = database.ref('vote/' + fname + lname);
-           var result = nameRef.set({
-             fname:fname,
-             lname:lname,
-             vote:1
-
-           })
-         }
-      });
-      $("#aaimrd").click(function(){
-        
-          event.preventDefault();
-         var fname =  document.getElementById("fname").value;
-         var lname = document.getElementById("lname").value
-        
-         
-         
-         if(fname==''){
-           alert('Please fill out your first name in the form.')
-         }
-         else if(lname==''){
-           alert('Please fill out your last name in the form.')
-         }
-         
-         else{
-           alert("Hi " + fname + " " + lname + "\n" + "Your message has been sent.");
-           alert("You clicked the aim.")
-           var database = firebase.database();
-           var nameRef = database.ref('vote/' + fname + lname);
-           var result = nameRef.set({
-             fname:fname,
-             lname:lname,
-             vote:2
-           })
-         }
-      });
-      //  $("#former").click(function(){
-      //   alert("You submit it.")
-      // });\
-      $(function(){
-       $('#Summit').click(function(event){
-       
- });
-        });
-    });
 
     </script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  
   </body>
 </html>
