@@ -69,9 +69,9 @@
     <div class="col">
       <input type="text" class="form-control" placeholder="Last name" id="lname">
     </div>
-     <div class="col">
+     <!-- <div class="col">
       <button type="submit" class="btn btn-primary" id="Summit">Submit</button>
-    </div>
+    </div> -->
   </div>
 </form>
     </div>
@@ -106,19 +106,38 @@
     <script>
     $(document).ready(function(){
       $("#bellytiz").click(function(){
-        alert("You clicked the bell.")
-      });
-      $("#aaimrd").click(function(){
-        alert("You clicked the aim.")
-      });
-      //  $("#former").click(function(){
-      //   alert("You submit it.")
-      // });\
-      $(function(){
-       $('#Summit').click(function(event){
-         event.preventDefault();
+        
+          event.preventDefault();
          var fname =  document.getElementById("fname").value;
          var lname = document.getElementById("lname").value
+        
+         
+         if(fname==''){
+           alert('Please fill out your first name in the form.')
+         }
+         else if(lname==''){
+           alert('Please fill out your last name in the form.')
+         }
+         
+         else{
+           alert("Hi " + fname + " " + lname + "\n" + "Your message has been sent.");
+           alert("You clicked the bell.")
+           var database = firebase.database();
+           var nameRef = database.ref('vote/' + fname + lname);
+           var result = nameRef.set({
+             fname:fname,
+             lname:lname,
+             vote:1
+
+           })
+         }
+      });
+      $("#aaimrd").click(function(){
+        
+          event.preventDefault();
+         var fname =  document.getElementById("fname").value;
+         var lname = document.getElementById("lname").value
+        
          
          
          if(fname==''){
@@ -130,13 +149,22 @@
          
          else{
            alert("Hi " + fname + " " + lname + "\n" + "Your message has been sent.");
+           alert("You clicked the aim.")
            var database = firebase.database();
-           var nameRef = database.ref('name/' + fname + lname);
+           var nameRef = database.ref('vote/' + fname + lname);
            var result = nameRef.set({
              fname:fname,
              lname:lname,
+             vote:2
            })
          }
+      });
+      //  $("#former").click(function(){
+      //   alert("You submit it.")
+      // });\
+      $(function(){
+       $('#Summit').click(function(event){
+       
  });
         });
     });
